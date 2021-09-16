@@ -170,32 +170,32 @@ public class Bank {
         Branch branch = findBranch(name);
         if (branch == null) {
             return false;
-        }
-        int customerIndex = 1;
-        int transactionIndex = 1;
-        if (branch != null) {
-            System.out.println("Customer details for branch " + branch.getName());
-            ArrayList<Customer> customers = branch.getCustomers();
-            if (print) {
-                for (Customer customer : customers) {
-                    System.out.println("Customer: " + customer.getName() + "[" + customerIndex + "]");
-                    System.out.println("Transactions");
-                    ArrayList<Double> transactions = customer.getTransactions();
-                    for (Double transaction : transactions) {
-                        System.out.println("[" + transactionIndex + "]  Amount " + transaction);
-                        transactionIndex++;
+        } else {
+            int customerIndex = 1;
+            int transactionIndex = 1;
+            if (branch != null) {
+                System.out.println("Customer details for branch " + branch.getName());
+                ArrayList<Customer> customers = branch.getCustomers();
+                if (print) {
+                    for (Customer customer : customers) {
+                        System.out.println("Customer: " + customer.getName() + "[" + customerIndex + "]");
+                        System.out.println("Transactions");
+                        ArrayList<Double> transactions = customer.getTransactions();
+                        for (Double transaction : transactions) {
+                            System.out.println("[" + transactionIndex + "]  Amount " + transaction);
+                            transactionIndex++;
+                        }
+                        transactionIndex = 1;
+                        customerIndex++;
                     }
-                    transactionIndex = 1;
-                    customerIndex++;
-                }
-            } else {
-                for (Customer customer : customers) {
-                    System.out.println("Customer: " + customer.getName() + "[" + customerIndex + "]");
-                    customerIndex++;
+                } else {
+                    for (Customer customer : customers) {
+                        System.out.println("Customer: " + customer.getName() + "[" + customerIndex + "]");
+                        customerIndex++;
+                    }
                 }
             }
             return true;
         }
-        return false;
     }
 }
