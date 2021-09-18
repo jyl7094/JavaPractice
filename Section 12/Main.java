@@ -43,29 +43,28 @@ public class Main {
         this.vocabulary.put("WEST", "W");
         this.vocabulary.put("QUIT", "Q");
         int location = 1;
-        boolean done = false;
-        while (!done) {
-            System.out.println(this.locations.get(location).getDescription() + "\n");
+        String direction = "";
+        while (true) {
+            System.out.println(this.locations.get(location).getDescription());
+            if (location == 0) {
+                break;
+            }
             System.out.print("Available exits are ");
+            System.out.println(this.locations.get(location).getExits().keySet());
             for (String exit : this.locations.get(location).getExits().keySet()) {
                 System.out.print(exit + ", ");
             }
-            for (String word : scanner.nextLine().split(" ")) {
-                if (word.toUpperCase().equals("N") || word.toUpperCase().equals("NORTH")) {
-                    
-                } else if (word.toUpperCase().equals("W") || word.toUpperCase().equals("WEST")) {
-
-                } else if (word.toUpperCase().equals("S") || word.toUpperCase().equals("SOUTH")) {
-
-                } else if (word.toUpperCase().equals("E") || word.toUpperCase().equals("EAST")) {
-
-                } else if (word.toUpperCase().equals("Q") || word.toUpperCase().equals("QUIT")) {
-                    done = true;
-                } else {
-                    System.out.println("\nYou cannot go in that direction");
+            for (String word : scanner.nextLine().toUpperCase().split(" ")) {
+                if (this.vocabulary.containsKey(word)) {
+                    direction = vocabulary.get(word);
+                    break;
                 }
             }
-            System.out.println();
+            if (this.locations.get(location).getExits().containsKey(direction)) {
+                location = this.locations.get(location).getExits().get(direction);
+            } else {
+                System.out.println("You cannot go in that direction");
+            }
         }
         scanner.close();
     }
