@@ -7,10 +7,10 @@ public abstract class ListItem {
     }
 
     abstract ListItem next();
-    abstract ListItem setNext(ListItem item);
+    abstract ListItem setNext(ListItem node);
     abstract ListItem previous();
-    abstract ListItem setPrevious(ListItem item);
-    abstract int compareTo(ListItem item);
+    abstract ListItem setPrevious(ListItem node);
+    abstract int compareTo(ListItem node);
 
     public Object getValue() {
         return this.value;

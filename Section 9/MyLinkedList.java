@@ -1,25 +1,31 @@
 public class MyLinkedList implements NodeList {
     private ListItem root;
-
+    
     public MyLinkedList(ListItem root) {
         this.root = root;
     }
 
     public ListItem getRoot() {
-        return this.root; 
+        return this.root;
     }
 
     public boolean addItem(ListItem item) {
-        ListItem current = this.root;
-        if (current == null) {
-            current = item;
+        ListItem curr = this.root;
+        if (curr == null) {
+            curr = item;
         } else {
-            if (current.compareTo(item) > 0) {
-                
-            } else if (current.compareTo(item) < 0) {
-
-            } else {
-                return false;
+            while (curr != null) {
+                if (curr.compareTo(item) > 0) {
+                    curr.setPrevious(item).setNext(curr);
+                } else if (curr.compareTo(item) < 0) {
+                    if (curr.next() == null) {
+                        curr.setNext(item).setPrevious(curr);
+                        return true;
+                    }
+                    curr = curr.next();
+                } else {
+                    return false;
+                }
             }
         }
         return true;
@@ -34,7 +40,7 @@ public class MyLinkedList implements NodeList {
             System.out.println("The list is empty");
         } else {
             while (root != null) {
-                System.out.println(root.getValue());
+                System.out.println(root.getValue().toString());
                 root = root.next();
             }
         }

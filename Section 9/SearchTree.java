@@ -1,6 +1,6 @@
 public class SearchTree implements NodeList {
     private ListItem root;
-    
+
     public SearchTree(ListItem root) {
         this.root = root;
     }
@@ -17,11 +17,11 @@ public class SearchTree implements NodeList {
         return true;
     }
 
-    private void perfromRemoval(ListItem item, ListItem parent) {
+    private void performRemoval(ListItem item, ListItem parent) {
 
     }
-
+    
     public void traverse(ListItem root) {
-        System.out.println();
+
     }
 }

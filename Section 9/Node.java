@@ -3,23 +3,23 @@ public class Node extends ListItem {
         super(value);
     }
 
-    ListItem next() {
+    public ListItem next() {
         return this.rightLink;
     }
 
-    ListItem setNext(ListItem item) {
-        return this.rightLink = item;
+    public ListItem setNext(ListItem node) {
+        return this.rightLink = node;
     }
 
-    ListItem previous() {
+    public ListItem previous() {
         return this.leftLink;
     }
 
-    ListItem setPrevious(ListItem item) {
-        return this.leftLink = item;
+    public ListItem setPrevious(ListItem node) {
+        return this.leftLink = node;
     }
 
-    int compareTo(ListItem item) {
-        return this.getValue().toString().compareTo(item.getValue().toString());
-    }  
+    public int compareTo(ListItem node) {
+        return this.getValue().toString().compareTo(node.getValue().toString());
+    }
 }
